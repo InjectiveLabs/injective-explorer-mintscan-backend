@@ -11,21 +11,21 @@ import (
 	"github.com/InjectiveLabs/injective-explorer-mintscan-backend/chain-exporter/types"
 )
 
+func init() {
+	chaintypes.SetBech32Prefixes(sdk.GetConfig())
+}
+
 // getValidators parses validators information and wrap into Precommit schema struct
 func (ex *Exporter) getValidators(vals []*types.Validator) (validators []*schema.Validator, err error) {
+	bech32PrefixConsPub := sdk.GetConfig().GetBech32ConsensusPubPrefix()
+
 	for _, val := range vals {
 		pubKey := new(ed25519.PubKey)
-
-		config := sdk.GetConfig()
-		chaintypes.SetBech32Prefixes(config)
-
-		bech32PrefixConsPub := config.GetBech32ConsensusPubPrefix()
-
 		pubKeyData, err := sdk.GetFromBech32(val.ConsensusPubKey, bech32PrefixConsPub)
 		if err != nil {
 			return nil, err
 		}
-		copy(pubKey.Key[:], pubKeyData)
+		pubKey.Key = append(pubKey.Key, pubKeyData...)
 		consensusAddress := sdk.GetConsAddress(pubKey).String()
 
 		ok, err := ex.db.ExistValidator(consensusAddress)
