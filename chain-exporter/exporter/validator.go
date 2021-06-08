@@ -15,11 +15,11 @@ import (
 func (ex *Exporter) getValidators(vals []*types.Validator) (validators []*schema.Validator, err error) {
 	for _, val := range vals {
 		pubKey := new(ed25519.PubKey)
-
 		config := sdk.GetConfig()
 		chaintypes.SetBech32Prefixes(config)
 
 		bech32PrefixConsPub := config.GetBech32ConsensusPubPrefix()
+		fmt.Println("🔥", bech32PrefixConsPub, val.ConsensusPubKey)
 
 		pubKeyData, err := sdk.GetFromBech32(val.ConsensusPubKey, bech32PrefixConsPub)
 		if err != nil {
