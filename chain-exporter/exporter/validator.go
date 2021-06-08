@@ -3,6 +3,7 @@ package exporter
 import (
 	"fmt"
 
+	chaintypes "github.com/InjectiveLabs/sdk-go/chain/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -14,13 +15,16 @@ import (
 func (ex *Exporter) getValidators(vals []*types.Validator) (validators []*schema.Validator, err error) {
 	for _, val := range vals {
 		pubKey := new(ed25519.PubKey)
-		bech32PrefixConsPub := sdk.GetConfig().GetBech32ConsensusPubPrefix()
+
+		config := sdk.GetConfig()
+		chaintypes.SetBech32Prefixes(config)
+
+		bech32PrefixConsPub := config.GetBech32ConsensusPubPrefix()
 
 		pubKeyData, err := sdk.GetFromBech32(val.ConsensusPubKey, bech32PrefixConsPub)
 		if err != nil {
 			return nil, err
 		}
-
 		copy(pubKey.Key[:], pubKeyData)
 		consensusAddress := sdk.GetConsAddress(pubKey).String()
 

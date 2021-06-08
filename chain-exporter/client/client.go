@@ -4,6 +4,7 @@ import (
 	"context"
 	"strings"
 
+	chaintypes "github.com/InjectiveLabs/sdk-go/chain/types"
 	"github.com/pkg/errors"
 	log "github.com/xlab/suplog"
 
@@ -18,9 +19,10 @@ import (
 	ctypes "github.com/tendermint/tendermint/rpc/core/types"
 	tmctypes "github.com/tendermint/tendermint/rpc/core/types"
 
+	chainClient "github.com/InjectiveLabs/sdk-go/chain/client"
+
 	"github.com/InjectiveLabs/injective-explorer-mintscan-backend/chain-exporter/config"
 	"github.com/InjectiveLabs/injective-explorer-mintscan-backend/chain-exporter/types"
-	chainClient "github.com/InjectiveLabs/sdk-go/chain/client"
 )
 
 type Client struct {
@@ -135,7 +137,7 @@ func (c Client) GetValidators() ([]*types.Validator, error) {
 				Identity: val.Description.Identity,
 				Website:  val.Description.Website,
 				Details:  val.Description.Details,
-			}, // Description
+			},                                    // Description
 			UnbondingHeight: val.UnbondingHeight, // int64
 			UnbondingTime:   val.UnbondingTime,   // time.Time
 			Commission: types.Commission{
@@ -152,7 +154,7 @@ func (c Client) GetValidators() ([]*types.Validator, error) {
 			return nil, err
 		}
 
-		v.ConsensusPubKey = sdk.MustBech32ifyAddressBytes(sdk.Bech32PrefixConsPub, pubKey.Bytes())
+		v.ConsensusPubKey = sdk.MustBech32ifyAddressBytes(chaintypes.Bech32PrefixConsPub, pubKey.Bytes())
 
 		vals = append(vals, v)
 	}
