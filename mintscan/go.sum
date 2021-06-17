@@ -40,6 +40,8 @@ github.com/InjectiveLabs/sdk-go v1.21.3 h1:mJL6Xez/6+lrk5V9cuHsHdGH/gyuNDxewqe5X
 github.com/InjectiveLabs/sdk-go v1.21.3/go.mod h1:lsAzvcQBYzkAtkH6wTcBhQxL7o5n3awKVVs+e1qdClM=
 github.com/InjectiveLabs/sdk-go v1.21.4 h1:MhTj27LkGiTyCunZnnhxa6LD23nslu3K+d33OW2Uzno=
 github.com/InjectiveLabs/sdk-go v1.21.4/go.mod h1:lsAzvcQBYzkAtkH6wTcBhQxL7o5n3awKVVs+e1qdClM=
+github.com/InjectiveLabs/sdk-go v1.22.2 h1:nUWmDY8kHmWaZQaAZdUwy1WUcAVskbesBSsR/XqrsIo=
+github.com/InjectiveLabs/sdk-go v1.22.2/go.mod h1:k8Bj7/P8Fop/ssFtdH1ITvhdJvpOLS3EZIKQb7+r3UU=
 github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
 github.com/OneOfOne/xxhash v1.2.2 h1:KMrpdQIwFcEqXDklaen+P1axHaj9BSKzvpUUfnHldSE=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
