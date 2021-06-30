@@ -1,6 +1,6 @@
-active: "888"
+active: "injective-1"
 
-"888":
+"injective-1":
   node:
     exchange_api_endpoint: ""
   database:

@@ -57,7 +57,7 @@ func ParseConfig() *Config {
 	sub := viper.Sub(chainID)
 	sub.Unmarshal(&config)
 
-	if chainID == "888" {
+	if chainID == "injective-1" {
 		config.Node.ChainID = chainID
 	} else {
 		panic(chainID + " - chain not suppported yet")

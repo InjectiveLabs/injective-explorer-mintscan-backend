@@ -47,10 +47,10 @@ func ParseConfig() Config {
 	}
 
 	switch viper.GetString("active") {
-	case "888":
+	case "injective-1":
 		cfg.Node = NodeConfig{
 			ExchangeAPIEndpoint: viper.GetString("testnet.node.exchange_api_endpoint"),
-			ChainID:             "888",
+			ChainID:             "injective-1",
 		}
 		cfg.DB = DBConfig{
 			Host:     viper.GetString("testnet.database.host"),
@@ -61,7 +61,7 @@ func ParseConfig() Config {
 		}
 
 	default:
-		log.Fatal("active can be only chain-id 888 (testnet).")
+		log.Fatal("active can be only chain-id injective-1 (testnet).")
 	}
 
 	return cfg

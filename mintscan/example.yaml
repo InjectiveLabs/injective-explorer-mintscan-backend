@@ -1,6 +1,6 @@
-chain_id: "888"
+chain_id: "injective-1"
 
-"888":
+"injective-1":
   node:
     rpc_node: ""
     exchange_api_endpoint: ""
